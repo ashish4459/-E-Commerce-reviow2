@@ -1,0 +1,38 @@
+document.getElementById("registrationForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+    const confirmPassword = document.getElementById("confirmPassword");
+
+    let valid = true;
+
+    // Email validation
+    if (!email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+        email.classList.add("is-invalid");
+        valid = false;
+    } else {
+        email.classList.remove("is-invalid");
+    }
+
+    // Password validation
+    if (password.value.length < 8) {
+        password.classList.add("is-invalid");
+        valid = false;
+    } else {
+        password.classList.remove("is-invalid");
+    }
+
+    // Confirm Password validation
+    if (password.value !== confirmPassword.value) {
+        confirmPassword.classList.add("is-invalid");
+        valid = false;
+    } else {
+        confirmPassword.classList.remove("is-invalid");
+    }
+
+    if (valid) {
+        alert("Registration successful!");
+        // Submit form or perform other actions
+    }
+});
